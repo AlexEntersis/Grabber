@@ -107,16 +107,16 @@ function highlight_searched_keywords(selector_row, selector_box, searched_args){
 }
 function create_contacts(profile_id, profile_email, profile_phone, url){
     $(profile_id).find('.profile_url > a').attr('href', url);
-    $(profile_id).find('.profile_url > a > img').attr('src', "/static/static/images/linkedin_icon.png");
+    $(profile_id).find('.profile_url > a > img').attr('src', "/static/images/linkedin_icon.png");
     if (profile_email){
-        $(profile_id).find('.profile_email_icon > a >img').attr('src', "/static/static/images/tick.png");
-        $(profile_id).find('.profile_contacts > .well-sm > .if_email > img').attr('src', "/static/static/images/email green.png");
+        $(profile_id).find('.profile_email_icon > a >img').attr('src', "/static/images/tick.png");
+        $(profile_id).find('.profile_contacts > .well-sm > .if_email > img').attr('src', "/static/images/email green.png");
         $(profile_id).find('.profile_email').html(profile_email)}
     else {
-        $(profile_id).find('.profile_email_icon > a >img').attr('src', "/static/static/images/minus.png")
+        $(profile_id).find('.profile_email_icon > a >img').attr('src', "/static/images/minus.png")
     }
     if (profile_phone){
-        $(profile_id).find('.profile_contacts > .well-sm > .if_phone > img').attr('src', "/static/static/images/phone.png");
+        $(profile_id).find('.profile_contacts > .well-sm > .if_phone > img').attr('src', "/static/images/phone.png");
         $(profile_id).find('.profile_phone').html(profile_phone)
     }
 }
