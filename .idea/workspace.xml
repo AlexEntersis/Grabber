@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="84445669-d947-4c58-bd30-c564d131eeb9" name="Default" comment="" />
+    <list default="true" id="84445669-d947-4c58-bd30-c564d131eeb9" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WFSParser/wsgi.py" afterPath="$PROJECT_DIR$/WFSParser/wsgi.py" />
+    </list>
     <ignored path="WFSParser.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -62,8 +64,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WFSParser/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="1" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
+            <state vertical-scroll-proportion="-4.3703704">
+              <caret line="45" column="30" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -1096,8 +1098,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WFSParser/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="1" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
+        <state vertical-scroll-proportion="-4.3703704">
+          <caret line="45" column="30" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="30" />
           <folding />
         </state>
       </provider>
