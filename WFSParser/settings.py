@@ -106,7 +106,7 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = 'static'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 
 # Internationalization
