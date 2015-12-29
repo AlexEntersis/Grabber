@@ -1,0 +1,75 @@
+
+{% extends 'main.html' %}
+{% load staticfiles %}
+{% block current %}
+    {% if user.is_authenticated %}
+        <div class="col-lg-3">
+            <div class="sliding_form">
+                <form method="post" style="position: fixed" id="post-form">
+                    {% csrf_token %}
+                    {{ form.title }}
+                    {{ form.skills }}
+                    {{ form.location}}
+                    <button type="submit" class="btn btn-primary-outline" style="margin: 10px">Search</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="loading">
+
+            </div>
+            <div class="search_parameters">
+                <!-- Searched Keywords in green labels -->
+                <div id="searched_skill" style="display: none"></div>
+                <div id="searched_title" style="display: none"></div>
+                <div id="searched_location" style="display: none"></div>
+            </div>
+            <div class="container"  style="color: white; font-size: 15px; width: 700px">
+                <div class="row">
+{#                    <div class="col-lg-1">Email</div>#}
+{#                    <div class="col-lg-5">Name</div>#}
+{#                    <div class="col-lg-5">Title</div>#}
+{#                    <div class="col-lg-1">Url</div>#}
+                </div>
+                <div class="profile_row">
+                    <div class="row">
+                        <div class="col-lg-1">
+                            <div class="profile_email_icon">
+                                 <!--<a href=""><img src="{% static "static/images/tick.png" %}"></a>-->
+                            </div>
+                        </div>
+                        <div class="col-lg-5"></div>
+                        <div class="col-lg-5"></div>
+                        <div class="col-lg-1">
+                            <div class="profile_url">
+{#                                <div class="profile_url"><a href="" target="_blank"><img src="{% static "static/images/linkedin_icon.png" %}" title="URL"></a>#}
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content" style="display:none">
+                        <div class="custom-well">
+                            <div class="profile_contacts">
+                                <div class="well-sm" style="margin: 10px">
+                                </div>
+                                <div class="custom-well">
+                                    <div class="well-sm" style="margin: 10px">
+                                        <div class="skills_list">
+                                            <h4 style="display: inline-block"><span class="label label-default" style="color: green">Skills</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <ul class="pagination"></ul>
+            </div>
+        </div>
+
+        <div class="col-lg-3" style="color: white; font-size: 15px;"></div>
+        </div>
+
+    {% endif %}
+{% endblock %}
