@@ -27,6 +27,7 @@ flake8==2.5.0
 google-api-python-client==1.4.0
 grab==0.6.29
 gspread==0.2.5
+gunicorn==19.4.3
 HTMLParser==0.0.2
 httplib2==0.9.1
 idna==2.0
