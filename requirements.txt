@@ -24,7 +24,6 @@ gspread==0.2.5
 HTMLParser==0.0.2
 httplib2==0.9.1
 idna==2.0
-jdcal==1.0
 kombu==3.0.28
 lxml==3.4.4
 mccabe==0.3.1
