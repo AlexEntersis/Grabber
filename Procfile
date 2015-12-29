@@ -1,1 +1,1 @@
-web: gunicorn WFSParser.wsgi --log-file -
+web: gunicorn WFSParser.wsgi:basic_search --log-file -
