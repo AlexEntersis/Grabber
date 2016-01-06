@@ -93,60 +93,67 @@ function search_result(data){
          }
     });
 }
-function paginator(data, current_page){
+function paginator(data, current_page) {
     var page_numbers = data['number_of_pages'];
-    $('.pagination').find('li').each(function(){
-       $(this).remove()
+    $('.pagination').find('li').each(function () {
+        $(this).remove()
     });
-      if (page_numbers > 5) {
-          if (current_page == 1) {
-              $('.pagination').append('<li class="active"><a id="page_' + current_page + '" href="#">' +  current_page + '</a></li>');
-              $('.pagination').append('<li><a id="page_' + (current_page + 1) + '" href="#">' + (current_page + 1) + '</a></li>');
-              $('.pagination').append('<li><a id="page_..." href="#">...</a></li>');
-              $('.pagination').append('<li><a id="page_' + page_numbers + '" href="#">' + page_numbers + '</a></li>');
-          } else if (current_page == 2) {
-              $('.pagination').append('<li><a id="page_' + (current_page - 1) + '" href="#">' +  (current_page - 1) + '</a></li>');
-              $('.pagination').append('<li class="active"><a id="page_' + current_page + '" href="#">' +  current_page  + '</a></li>');
-              $('.pagination').append('<li><a id="page_' + (current_page + 1) + '" href="#">' +  (current_page + 1) + '</a></li>');
-              $('.pagination').append('<li><a id="page_..." href="#">...</a></li>');
-              $('.pagination').append('<li><a id="page_' + page_numbers + '" href="#">' + page_numbers + '</a></li>')
-          } else if (current_page == 3) {
-              $('.pagination').append('<li><a id="page_1" href="#">1</a></li>');
-              $('.pagination').append('<li><a id="page_' + (current_page - 1) + '" href="#">' +  (current_page - 1) + '</a></li>');
-              $('.pagination').append('<li class="active"><a id="page_' + current_page + '" href="#">' +  current_page  + '</a></li>');
-              $('.pagination').append('<li><a id="page_' + (current_page + 1) + '" href="#">' +  (current_page + 1) + '</a></li>');
-              $('.pagination').append('<li><a id="page_..." href="#">...</a></li>');
-              $('.pagination').append('<li><a id="page_' + page_numbers + '" href="#">' + page_numbers + '</a></li>')
-              } else if (current_page >= 2 && page_numbers - 2 > current_page) {
-              $('.pagination').append('<li><a id="page_1" href="#">1</a></li>');
-              $('.pagination').append('<li><a id="page_..." href="#">...</a></li>');
-              $('.pagination').append('<li><a id="page_' + (current_page - 1) + '" href="#">' +  (current_page - 1) + '</a></li>');
-              $('.pagination').append('<li class="active"><a id="page_' + current_page + '" href="#">' +  current_page  + '</a></li>');
-              $('.pagination').append('<li><a id="page_' + (current_page + 1) + '" href="#">' +  (current_page + 1) + '</a></li>');
-              $('.pagination').append('<li><a id="page_..." href="#">...</a></li>');
-              $('.pagination').append('<li><a id="page_' + page_numbers + '" href="#">' + page_numbers + '</a></li>')
-          } else if (current_page == page_numbers - 2) {
-              $('.pagination').append('<li><a id="page_1" href="#">1</a></li>');
-              $('.pagination').append('<li><a id="page_..." href="#">...</a></li>');
-              $('.pagination').append('<li><a id="page_' + (current_page - 1) + '" href="#">' +  (current_page - 1) + '</a></li>');
-              $('.pagination').append('<li class="active"><a id="page_' + current_page + '" href="#">' +  current_page  + '</a></li>');
-              $('.pagination').append('<li><a id="page_' + (current_page + 1) + '" href="#">' +  (current_page + 1) + '</a></li>');
-              $('.pagination').append('<li><a id="page_' + page_numbers + '" href="#">' + page_numbers + '</a></li>')
-          } else if (current_page == page_numbers - 1) {
-              $('.pagination').append('<li><a id="page_1" href="#">1</a></li>');
-              $('.pagination').append('<li><a id="page_..." href="#">...</a></li>');
-              $('.pagination').append('<li><a id="page_' + (current_page - 1) + '" href="#">' +  (current_page - 1) + '</a></li>');
-              $('.pagination').append('<li class="active"><a id="page_' + current_page + '" href="#">' +  current_page  + '</a></li>');
-              $('.pagination').append('<li><a id="page_' + page_numbers + '" href="#">' + page_numbers + '</a></li>')
+    if (page_numbers > 5) {
+        if (current_page == 1) {
+            $('.pagination').append('<li class="active"><a id="page_' + current_page + '" href="#">' + current_page + '</a></li>');
+            $('.pagination').append('<li><a id="page_' + (current_page + 1) + '" href="#">' + (current_page + 1) + '</a></li>');
+            $('.pagination').append('<li><a id="page_..." href="#">...</a></li>');
+            $('.pagination').append('<li><a id="page_' + page_numbers + '" href="#">' + page_numbers + '</a></li>');
+        } else if (current_page == 2) {
+            $('.pagination').append('<li><a id="page_' + (current_page - 1) + '" href="#">' + (current_page - 1) + '</a></li>');
+            $('.pagination').append('<li class="active"><a id="page_' + current_page + '" href="#">' + current_page + '</a></li>');
+            $('.pagination').append('<li><a id="page_' + (current_page + 1) + '" href="#">' + (current_page + 1) + '</a></li>');
+            $('.pagination').append('<li><a id="page_..." href="#">...</a></li>');
+            $('.pagination').append('<li><a id="page_' + page_numbers + '" href="#">' + page_numbers + '</a></li>')
+        } else if (current_page == 3) {
+            $('.pagination').append('<li><a id="page_1" href="#">1</a></li>');
+            $('.pagination').append('<li><a id="page_' + (current_page - 1) + '" href="#">' + (current_page - 1) + '</a></li>');
+            $('.pagination').append('<li class="active"><a id="page_' + current_page + '" href="#">' + current_page + '</a></li>');
+            $('.pagination').append('<li><a id="page_' + (current_page + 1) + '" href="#">' + (current_page + 1) + '</a></li>');
+            $('.pagination').append('<li><a id="page_..." href="#">...</a></li>');
+            $('.pagination').append('<li><a id="page_' + page_numbers + '" href="#">' + page_numbers + '</a></li>')
+        } else if (current_page >= 2 && page_numbers - 2 > current_page) {
+            $('.pagination').append('<li><a id="page_1" href="#">1</a></li>');
+            $('.pagination').append('<li><a id="page_..." href="#">...</a></li>');
+            $('.pagination').append('<li><a id="page_' + (current_page - 1) + '" href="#">' + (current_page - 1) + '</a></li>');
+            $('.pagination').append('<li class="active"><a id="page_' + current_page + '" href="#">' + current_page + '</a></li>');
+            $('.pagination').append('<li><a id="page_' + (current_page + 1) + '" href="#">' + (current_page + 1) + '</a></li>');
+            $('.pagination').append('<li><a id="page_..." href="#">...</a></li>');
+            $('.pagination').append('<li><a id="page_' + page_numbers + '" href="#">' + page_numbers + '</a></li>')
+        } else if (current_page == page_numbers - 2) {
+            $('.pagination').append('<li><a id="page_1" href="#">1</a></li>');
+            $('.pagination').append('<li><a id="page_..." href="#">...</a></li>');
+            $('.pagination').append('<li><a id="page_' + (current_page - 1) + '" href="#">' + (current_page - 1) + '</a></li>');
+            $('.pagination').append('<li class="active"><a id="page_' + current_page + '" href="#">' + current_page + '</a></li>');
+            $('.pagination').append('<li><a id="page_' + (current_page + 1) + '" href="#">' + (current_page + 1) + '</a></li>');
+            $('.pagination').append('<li><a id="page_' + page_numbers + '" href="#">' + page_numbers + '</a></li>')
+        } else if (current_page == page_numbers - 1) {
+            $('.pagination').append('<li><a id="page_1" href="#">1</a></li>');
+            $('.pagination').append('<li><a id="page_..." href="#">...</a></li>');
+            $('.pagination').append('<li><a id="page_' + (current_page - 1) + '" href="#">' + (current_page - 1) + '</a></li>');
+            $('.pagination').append('<li class="active"><a id="page_' + current_page + '" href="#">' + current_page + '</a></li>');
+            $('.pagination').append('<li><a id="page_' + page_numbers + '" href="#">' + page_numbers + '</a></li>')
 
-          } else if (current_page == page_numbers) {
-              $('.pagination').append('<li><a id="page_1" href="#">1</a></li>');
-              $('.pagination').append('<li><a id="page_..." href="#">...</a></li>');
-              $('.pagination').append('<li><a id="page_' + (current_page - 1) + '" href="#">' +  (current_page - 1) + '</a></li>');
-              $('.pagination').append('<li class="active"><a id="page_' + current_page + '" href="#">' +  current_page  + '</a></li>');
-          }
-      }
-
+        } else if (current_page == page_numbers) {
+            $('.pagination').append('<li><a id="page_1" href="#">1</a></li>');
+            $('.pagination').append('<li><a id="page_..." href="#">...</a></li>');
+            $('.pagination').append('<li><a id="page_' + (current_page - 1) + '" href="#">' + (current_page - 1) + '</a></li>');
+            $('.pagination').append('<li class="active"><a id="page_' + current_page + '" href="#">' + current_page + '</a></li>');
+        }
+    } else if (page_numbers < 5) {
+        for (var i = 1; i < page_numbers + 1; i++) {
+            if (current_page == i){
+                $('.pagination').append('<li class="active"><a id="page_"' + i + ' href="#">' + i + '</a></li>');
+            } else {
+                $('.pagination').append('<li><a id="page_"' + i + ' href="#">' + i + '</a></li>');
+            }
+        };
+    }
 }
 function highlight_searched_keywords(selector_row, selector_box, searched_args){
     $(selector_row).each(function(){$(this).remove();});
