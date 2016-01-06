@@ -104,7 +104,22 @@ function paginator(data, current_page){
               $('.pagination').append('<li><a id="page_' + (current_page + 1) + '"</a>' + (current_page + 1) + '</li>');
               $('.pagination').append('<li><a id="page_..."</a>...</li>');
               $('.pagination').append('<li><a id="page_' + page_numbers + '"</a>' + page_numbers + '</li>');
-          } else if (current_page > 1 && page_numbers - 2 > current_page) {
+          } else if (current_page == 2) {
+              $('.pagination').append('<li><a id="page_' + (current_page - 1) + '"</a>' + (current_page - 1) + '</li>');
+              $('.pagination').append('<li class="active"><a id="page_' + current_page + '"</a>' + current_page + '</li>');
+              $('.pagination').append('<li><a id="page_' + (current_page + 1) + '"</a>' + (current_page + 1) + '</li>');
+              $('.pagination').append('<li><a id="page_..."</a>...</li>');
+              $('.pagination').append('<li><a id="page_' + page_numbers + '"</a>' + page_numbers + '</li>');
+          } else if (current_page == 3) {
+              $('.pagination').append('<li><a id="page_1"</a>1</li>');
+              $('.pagination').append('<li><a id="page_' + (current_page - 1) + '"</a>' + (current_page - 1) + '</li>');
+              $('.pagination').append('<li class="active"><a id="page_' + current_page + '"</a>' + current_page + '</li>');
+              $('.pagination').append('<li><a id="page_' + (current_page + 1) + '"</a>' + (current_page + 1) + '</li>');
+              $('.pagination').append('<li><a id="page_..."</a>...</li>');
+              $('.pagination').append('<li><a id="page_' + page_numbers + '"</a>' + page_numbers + '</li>');
+              } else if (current_page >= 2 && page_numbers - 2 > current_page) {
+              $('.pagination').append('<li><a id="page_1"</a>1</li>');
+              $('.pagination').append('<li><a id="page_..."</a>...</li>');
               $('.pagination').append('<li><a id="page_' + (current_page - 1) + '"</a>' + (current_page - 1) + '</li>');
               $('.pagination').append('<li class="active"><a id="page_' + current_page + '"</a>' + current_page + '</li>');
               $('.pagination').append('<li><a id="page_' + (current_page + 1) + '"</a>' + (current_page + 1) + '</li>');
