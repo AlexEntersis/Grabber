@@ -61,11 +61,12 @@ function search_result(data){
             highlight_searched_keywords(".search_parameters > h4", ".search_parameters", data['search_args']);
             if (data['empty_search_args'] === true) {
                 $(".container").append('<div class="profile_row">Nothing To Search</div>');
+                $('.pagination > li').each(function(index){
+                    $(this).remove();});
             } else {
                 if (data['profiles'].length === 0) {
                     $(".container").append('<div class="profile_row">No Results</div>');
-                }
-                else {
+                } else {
                     for (var i = 0; i < data['page_limit']; i++) {
                         var new_row = $("<div style='display: none' class='profile_row'id='profile_" + data['profiles'][i]['pk'] + "'><div class='row'>" +
                             "<div class='col-lg-1'><div class='profile_email_icon'><a href=''><img src=''></a></div></div>" +
