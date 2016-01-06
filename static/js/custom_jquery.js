@@ -141,9 +141,9 @@ function paginator(data, current_page){
 
           } else if (current_page == page_numbers) {
               $('.pagination').append('<li><a id="page_1" href="#">1</a></li>');
-              $('.pagination').append('<li><a id="page_... href="#">...</a></li>');
-              $('.pagination').append('<li><a id="page_' + (current_page - 1) + '"</a>' + (current_page - 1) + '</li>');
-              $('.pagination').append('<li class="active"><a id="page_' + current_page + '"</a>' + current_page + '</li>');
+              $('.pagination').append('<li><a id="page_..." href="#">...</a></li>');
+              $('.pagination').append('<li><a id="page_' + (current_page - 1) + '" href="#">' +  (current_page - 1) + '</a></li>');
+              $('.pagination').append('<li class="active"><a id="page_' + current_page + '" href="#">' +  current_page  + '</a></li>');
           }
       }
 
