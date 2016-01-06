@@ -66,6 +66,8 @@ function search_result(data){
             } else {
                 if (data['profiles'].length === 0) {
                     $(".container").append('<div class="profile_row">No Results</div>');
+                    $('.pagination > li').each(function(index){
+                        $(this).remove();});
                 } else {
                     for (var i = 0; i < data['page_limit']; i++) {
                         var new_row = $("<div style='display: none' class='profile_row'id='profile_" + data['profiles'][i]['pk'] + "'><div class='row'>" +
