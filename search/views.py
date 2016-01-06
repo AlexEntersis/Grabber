@@ -24,7 +24,7 @@ def profile_paginator(profiles, page_limit, page_number):
     return new_profiles
 
 def ajax_search(request):
-        profiles_per_page = 10  # indicated how many profiles will be shown on one page
+        profiles_per_page = 25  # indicated how many profiles will be shown on one page
         page = int(request.POST.get('page')) - 1
         if request.method == 'POST':
             form = SearchForm(request.POST)
