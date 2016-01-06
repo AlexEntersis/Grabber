@@ -25,9 +25,13 @@ def ajax_search(request):
                 data['search_args'] = [str(request.POST.get('title')),
                                        str(request.POST.get('skill')).lower(),
                                        str(request.POST.get('location')).lower().capitalize(),]
-                profiles = profile_filter(data['search_args'])
-                data['profiles'] = profiles_dict(profiles)
-                data['page_limit'] = 30 if len(data['profiles']) >= 30 else len(data['profiles'])
+                if not str(request.POST.get('title')) and not str(request.POST.get('skill')) and not str(request.POST.get('location')):
+                    data['empty_search_args'] = True
+                else:
+                    data['empty_search_args'] = False
+                    profiles = profile_filter(data['search_args'])
+                    data['profiles'] = profiles_dict(profiles)
+                    data['page_limit'] = 30 if len(data['profiles']) >= 30 else len(data['profiles'])
                 return HttpResponse(json.dumps(data), content_type="application/json")
 
 
