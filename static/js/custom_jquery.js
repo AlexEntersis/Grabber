@@ -25,15 +25,20 @@ $(document).ready(function(){
        $('#search_arg_0').html($(title_field));
        $('#search_arg_1').html($(skill_field));
        $('#search_arg_2').html($(location_field));
-       var data = {"location" : location_field, "skill": skill_field, "title":title_field};
+       var data = {"location" : location_field, "skill": skill_field, "title":title_field, "page": 1};
        search_result(data);
    });
 });
 
 $(document).ajaxComplete(function(){
-    var data = {"title": $("#search_arg_0").text(),
+    // if user clicks on the searched item and removes from the request,
+    // this will call search with updated params on the first page
+    var data = {
+                "title": $("#search_arg_0").text(),
                 "skill":  $("#search_arg_1").text(),
-                "location": $("#search_arg_2").text()};
+                "location": $("#search_arg_2").text(),
+                "page": 1
+    };
     $('.search_parameters > h4 > span').click(function(){
        var search_arg_id = $(this).attr("id");
        if (search_arg_id === "search_arg_0"){data['title'] = null;}
@@ -42,20 +47,17 @@ $(document).ajaxComplete(function(){
        $(this).hide('fast', function(){$(this).remove();});
        search_result(data)
    });
-
 });
 
-
 function search_result(data){
-
     $.ajax({
         url: '/search/result/',
         type: 'POST',
         data: {location: data['location'],
                title: data['title'],
-               skill: data['skill']},
+               skill: data['skill'],
+               page: data['page']},
         success : function(data) {
-
             $('.profile_row').each(function(index){
                $(this).remove();});
             highlight_searched_keywords(".search_parameters > h4", ".search_parameters", data['search_args']);
@@ -83,33 +85,45 @@ function search_result(data){
                         var this_profile = $('#profile_' + data['profiles'][i]['pk']);
                         create_contacts(this_profile, data['profiles'][i]['email'], data['profiles'][i]['phone'], data['profiles'][i]['url']);
                         create_skills(this_profile, data['profiles'][i]['skills'], data['search_args']);
-                        new_row.show('fast')
-                        paginator(data);
+                        new_row.show('fast');
+                        paginator(data, data['page']);
                     }
                 }
             }
          }
     });
 }
-
-function paginator(data){
-    var page_numbers = (data['profiles'].length/30 | 0);
+function paginator(data, current_page){
+    var page_numbers = data['number_of_pages'];
     $('.pagination').find('li').each(function(){
        $(this).remove()
     });
-    if (page_numbers > 5){
-         $('.pagination').append('<li><a id="page_1" "href="1"</a>1</li>');
-         $('.pagination').append('<li><a id="page_1" "href="1"</a>...</li>');
-         $('.pagination').append('<li><a id="page_"' + page_numbers + 'href="1"</a>'+ page_numbers + '</li>');
-        return false;
-    }
-    if (page_numbers === 0 ){$('.pagination').append('<li><a id="page_1" "href="1"</a>1</li>');
-    } else {
-        for (var i=0; i < page_numbers; i++) {
-            $('.pagination').append('<li><a id="page_' + i + '"href="#">' + (i + 1) + '</a></li>')
-        }
+      if (page_numbers > 5) {
+          if (current_page == 1) {
+              $('.pagination').append('<li class="active"><a id="page_' + current_page + '"</a>' + current_page + '</li>');
+              $('.pagination').append('<li><a id="page_' + (current_page + 1) + '"</a>' + (current_page + 1) + '</li>');
+              $('.pagination').append('<li><a id="page_..."</a>...</li>');
+              $('.pagination').append('<li><a id="page_' + page_numbers + '"</a>' + page_numbers + '</li>');
+          } else if (current_page > 1 && page_numbers - 1 > current_page) {
+              $('.pagination').append('<li><a id="page_' + (current_page - 1) + '"</a>' + (current_page - 1) + '</li>');
+              $('.pagination').append('<li class="active"><a id="page_' + current_page + '"</a>' + current_page + '</li>');
+              $('.pagination').append('<li><a id="page_' + (current_page + 1) + '"</a>' + (current_page + 1) + '</li>');
+              $('.pagination').append('<li><a id="page_..."</a>...</li>');
+              $('.pagination').append('<li><a id="page_' + page_numbers + '"</a>' + page_numbers + '</li>');
+          } else if (current_page == page_numbers - 1) {
+              $('.pagination').append('<li><a id="page_1"</a>1</li>');
+              $('.pagination').append('<li><a id="page_..."</a>...</li>');
+              $('.pagination').append('<li><a id="page_' + (current_page - 1) + '"</a>' + (current_page - 1) + '</li>');
+              $('.pagination').append('<li class="active"><a id="page_' + current_page + '"</a>' + current_page + '</li>');
+              $('.pagination').append('<li><a id="page_' + page_numbers + '"</a>' + page_numbers + '</li>');
 
-    }
+          } else if (current_page == page_numbers) {
+              $('.pagination').append('<li><a id="page_1"</a>1</li>');
+              $('.pagination').append('<li><a id="page_..."</a>...</li>');
+              $('.pagination').append('<li><a id="page_' + (current_page - 1) + '"</a>' + (current_page - 1) + '</li>');
+              $('.pagination').append('<li class="active"><a id="page_' + current_page + '"</a>' + current_page + '</li>');
+          }
+      }
 }
 function highlight_searched_keywords(selector_row, selector_box, searched_args){
     $(selector_row).each(function(){$(this).remove();});
@@ -141,3 +155,14 @@ function create_skills(profile_id, skills, searched_args){
         }
     }
 }
+$(document).ajaxComplete(function(){
+   $('.pagination > li > a').click(function() {
+       var page = $(this).text();
+       var data = {
+           "title": $("#search_arg_0").text(),
+           "skill": $("#search_arg_1").text(),
+           "location": $("#search_arg_2").text(),
+           "page": page};
+           search_result(data);
+   });
+});
