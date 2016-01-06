@@ -44,10 +44,11 @@
                  {% if user.is_authenticated %}
                             <li type="button" class="active"><a href="/parse/" style="text-decoration:none">Parse</a></li>
                      {% if user.is_superuser %}
-
                             <li type="button" class="active"><a href="/statistics/" style="text-decoration:none">Statistics</a></li>
                      {% endif %}
                      <li type="button" class="active"><a href="/search/" style="text-decoration:none">Search</a></li>
+                     <li type="button" class="active"><a href="/about/" style="text-decoration:none">About</a></li>
+                     <li type="button" class="active"><a href="/auth/my_account/" style="text-decoration:none">My Account</a></li>
 
                 {% endif %}
             </ul>

@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^parse/$', 'basic_parser.views.parser'),
     url(r'^statistics/$', 'basic_parser.views.statistics'),
     url(r'^download_all/$', 'basic_parser.db.download_all'),
+    url(r'^about/$', 'basic_parser.views.about'),
     url(r'', 'basic_parser.views.basic'),
 
 

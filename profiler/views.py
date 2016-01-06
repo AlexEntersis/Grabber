@@ -25,3 +25,8 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+def general(request):
+    args = {}
+    args['user'] = auth.get_user(request)
+    return render_to_response("account_page.html", args)

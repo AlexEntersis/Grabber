@@ -106,3 +106,7 @@ def upload(request):
 
 
 
+def about(request):
+    args = {}
+    args['user'] = auth.get_user(request)
+    return render_to_response("about.html", args)

@@ -8,6 +8,7 @@ from django.contrib.auth.views import password_reset
 urlpatterns = [
     url(r'^login/$', 'profiler.views.login'),
     url(r'^logout/$', 'profiler.views.logout'),
+    url(r'^my_account/$', 'profiler.views.general'),
     url(r'^reset/$',
         'django.contrib.auth.views.password_reset',
         {'post_reset_redirect' : '/reset/done/'},
