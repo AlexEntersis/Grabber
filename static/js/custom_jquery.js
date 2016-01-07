@@ -58,7 +58,9 @@ function search_result(data){
                skill: data['skill'],
                page: data['page']},
         beforeSend: function(){
+                       $('.pagination').html("");
                        $(".container").html('<div class="text-center"><img src="/static/images/ajax-loader.gif"></div>');
+
                    },
         success : function(data) {
             $(".container").html("");
@@ -110,45 +112,45 @@ function paginator(data, current_page) {
         if (current_page == 1) {
             $(paginator).append('<li class="active"><a id="page_' + current_page + '" href="#">' + current_page + '</a></li>');
             $(paginator).append('<li><a id="page_' + (current_page + 1) + '" href="#">' + (current_page + 1) + '</a></li>');
-            $(paginator).append('<li><a id="page_..." href="#">...</a></li>');
+            $(paginator).append('<li><a id="page_...">...</a></li>');
             $(paginator).append('<li><a id="page_' + page_numbers + '" href="#">' + page_numbers + '</a></li>');
         } else if (current_page == 2) {
             $(paginator).append('<li><a id="page_' + (current_page - 1) + '" href="#">' + (current_page - 1) + '</a></li>');
             $(paginator).append('<li class="active"><a id="page_' + current_page + '" href="#">' + current_page + '</a></li>');
             $(paginator).append('<li><a id="page_' + (current_page + 1) + '" href="#">' + (current_page + 1) + '</a></li>');
-            $(paginator).append('<li><a id="page_..." href="#">...</a></li>');
+            $(paginator).append('<li><a id="page_...">...</a></li>');
             $(paginator).append('<li><a id="page_' + page_numbers + '" href="#">' + page_numbers + '</a></li>')
         } else if (current_page == 3) {
             $(paginator).append('<li><a id="page_1" href="#">1</a></li>');
             $(paginator).append('<li><a id="page_' + (current_page - 1) + '" href="#">' + (current_page - 1) + '</a></li>');
             $(paginator).append('<li class="active"><a id="page_' + current_page + '" href="#">' + current_page + '</a></li>');
             $(paginator).append('<li><a id="page_' + (current_page + 1) + '" href="#">' + (current_page + 1) + '</a></li>');
-            $(paginator).append('<li><a id="page_..." href="#">...</a></li>');
+            $(paginator).append('<li><a id="page_...">...</a></li>');
             $(paginator).append('<li><a id="page_' + page_numbers + '" href="#">' + page_numbers + '</a></li>')
         } else if (current_page >= 2 && page_numbers - 2 > current_page) {
             $(paginator).append('<li><a id="page_1" href="#">1</a></li>');
-            $(paginator).append('<li><a id="page_..." href="#">...</a></li>');
+            $(paginator).append('<li><a id="page_...">...</a></li>');
             $(paginator).append('<li><a id="page_' + (current_page - 1) + '" href="#">' + (current_page - 1) + '</a></li>');
             $(paginator).append('<li class="active"><a id="page_' + current_page + '" href="#">' + current_page + '</a></li>');
             $(paginator).append('<li><a id="page_' + (current_page + 1) + '" href="#">' + (current_page + 1) + '</a></li>');
-            $(paginator).append('<li><a id="page_..." href="#">...</a></li>');
+            $(paginator).append('<li><a id="page_...">...</a></li>');
             $(paginator).append('<li><a id="page_' + page_numbers + '" href="#">' + page_numbers + '</a></li>')
         } else if (current_page == page_numbers - 2) {
             $(paginator).append('<li><a id="page_1" href="#">1</a></li>');
-            $(paginator).append('<li><a id="page_..." href="#">...</a></li>');
+            $(paginator).append('<li><a id="page_...">...</a></li>');
             $(paginator).append('<li><a id="page_' + (current_page - 1) + '" href="#">' + (current_page - 1) + '</a></li>');
             $(paginator).append('<li class="active"><a id="page_' + current_page + '" href="#">' + current_page + '</a></li>');
             $(paginator).append('<li><a id="page_' + (current_page + 1) + '" href="#">' + (current_page + 1) + '</a></li>');
             $(paginator).append('<li><a id="page_' + page_numbers + '" href="#">' + page_numbers + '</a></li>')
         } else if (current_page == page_numbers - 1) {
             $(paginator).append('<li><a id="page_1" href="#">1</a></li>');
-            $(paginator).append('<li><a id="page_..." href="#">...</a></li>');
+            $(paginator).append('<li><a id="page_...">...</a></li>');
             $(paginator).append('<li><a id="page_' + (current_page - 1) + '" href="#">' + (current_page - 1) + '</a></li>');
             $(paginator).append('<li class="active"><a id="page_' + current_page + '" href="#">' + current_page + '</a></li>');
             $(paginator).append('<li><a id="page_' + page_numbers + '" href="#">' + page_numbers + '</a></li>')
         } else if (current_page == page_numbers) {
             $(paginator).append('<li><a id="page_1" href="#">1</a></li>');
-            $(paginator).append('<li><a id="page_..." href="#">...</a></li>');
+            $(paginator).append('<li><a id="page_...">...</a></li>');
             $(paginator).append('<li><a id="page_' + (current_page - 1) + '" href="#">' + (current_page - 1) + '</a></li>');
             $(paginator).append('<li class="active"><a id="page_' + current_page + '" href="#">' + current_page + '</a></li>');
         }
@@ -194,13 +196,15 @@ function create_skills(profile_id, skills, searched_args){
 }
 $(document).ajaxComplete(function(){
    $('.pagination > li > a').click(function() {
-       var page = $(this).text();
-       var data = {
-           "title": $("#search_arg_0").text(),
-           "skill": $("#search_arg_1").text(),
-           "location": $("#search_arg_2").text(),
-           "page": page};
+       if ($(this).text() !== "...") {
+           var page = $(this).text();
+           var data = {
+               "title": $("#search_arg_0").text(),
+               "skill": $("#search_arg_1").text(),
+               "location": $("#search_arg_2").text(),
+               "page": page};
            search_result(data);
+       }
    });
 });
 
