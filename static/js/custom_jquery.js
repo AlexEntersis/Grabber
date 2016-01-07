@@ -78,11 +78,14 @@ function search_result(data){
                             "<div class='col-lg-5'><div class='profile_title'>" + data['profiles'][i]['title'] + "</div></div>" +
                             "<div class='col-lg-1'><div class='profile_url'><a href='" + data['profiles'][i]['url'] + "' target='_blank'><img src='' title='URL'></a></div></div>" +
                             "</div>" +
-                            "<div class='content' style='display:none'><div class='custom-well'><div class='profile_contacts'><div class='well-sm' style='margin: 10px'><div class='if_email'><img src=''><div class='profile_email' style='display: inline-block'></div></div>" +
+                            "<div class='content' style='display:none'><div class='custom-well'><div class='profile_contacts'><div class='well-sm' style='margin: 10px'><div class='full_description'></div><div class='if_email'><img src=''><div class='profile_email' style='display: inline-block'></div></div>" +
                             "<div class='if_phone'><img src='''><div class='profile_phone' style='display: inline-block'></div></div></div></div></div>" +
                             "<div class='custom-well'><div class='well-sm' style='margin: 10px'><div class='skills_list'></div></div></div></div>");
                         $(".container").append(new_row);
+
                         var this_profile = $('#profile_' + data['profiles'][i]['pk']);
+                        $(this_profile).find('.full_description').append("<a href='/profile/" + data['profiles'][i]['pk'] + "/' target='_blank' class='btn btn-info'>Info</a>");
+
                         create_contacts(this_profile, data['profiles'][i]['email'], data['profiles'][i]['phone'], data['profiles'][i]['url']);
                         create_skills(this_profile, data['profiles'][i]['skills'], data['search_args']);
                         new_row.show('fast');
@@ -196,3 +199,4 @@ $(document).ajaxComplete(function(){
            search_result(data);
    });
 });
+

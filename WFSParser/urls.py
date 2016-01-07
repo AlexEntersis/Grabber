@@ -20,8 +20,9 @@ from django.contrib import admin
 urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^auth/', include("profiler.urls")),
+    url(r'^auth/', include("account_master.urls")),
     url(r'^search/', include('search.urls')),
+    url(r'^profile/', include('profiler.urls')),
     url(r'^', include('basic_parser.urls')),
 
 

@@ -1,32 +1,13 @@
-from django.shortcuts import render
+from django.contrib import auth
+from django.shortcuts import render, render_to_response
 
 # Create your views here.
+from basic_parser.models import Profile
 
-from django.contrib import auth
-from django.shortcuts import redirect, render_to_response
 
-def password_reset_done(request):
-    return  render_to_response('statistics.html')
-
-def login(request):
+def basic(request, profile_id):
     args = {}
-    if request.POST:
-        username = request.POST.get('username', '')
-        password = request.POST.get('password', '')
-        user = auth.authenticate(username=username, password=password)
-        if user is not None:
-            auth.login(request, user)
-            return redirect('/')
-        else:
-            return render_to_response('login.html', args)
-    else:
-        return render_to_response('login.html', args)
-
-def logout(request):
-    auth.logout(request)
-    return redirect('/')
-
-def general(request):
-    args = {}
+    profile = Profile.objects.get(pk=profile_id)
+    args['name'] = profile.name
     args['user'] = auth.get_user(request)
-    return render_to_response("account_page.html", args)
+    return render_to_response('profile_page.html', args)

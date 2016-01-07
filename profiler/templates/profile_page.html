@@ -1,0 +1,6 @@
+{% extends 'main.html' %}
+{% block current %}
+    {% if user.is_authenticated %}
+        <p>{{ name }}'s INDIVIDUAL PAGE</p>
+    {% endif %}
+{% endblock %}

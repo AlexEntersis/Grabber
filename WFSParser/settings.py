@@ -36,8 +36,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'basic_parser',
-    'profiler',
+    'account_master',
     'search',
+    'profiler',
     'django.contrib.admin',
     'django.contrib.auth',
 )
@@ -60,6 +61,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, "basic_parser/templates"),
+            os.path.join(BASE_DIR, "account_master/templates"),
             os.path.join(BASE_DIR, "profiler/templates"),
             os.path.join(BASE_DIR, "search/templates"),
             os.path.join(BASE_DIR, 'templates'),
