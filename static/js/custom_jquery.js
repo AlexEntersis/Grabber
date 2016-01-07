@@ -57,7 +57,11 @@ function search_result(data){
                title: data['title'],
                skill: data['skill'],
                page: data['page']},
+        beforeSend: function(){
+                       $(".container").html('<div class="text-center"><img src="/static/images/ajax-loader.gif"></div>');
+                   },
         success : function(data) {
+            $(".container").html("");
             $('.profile_row').each(function(index){
                $(this).remove();});
             highlight_searched_keywords(".search_parameters > h4", ".search_parameters", data['search_args']);

@@ -2,5 +2,10 @@
 {% block current %}
     {% if user.is_authenticated %}
         <p>{{ name }}'s INDIVIDUAL PAGE</p>
+{#         <form method="get" style="position: fixed">#}
+{#             {{ form.text }}#}
+{#             {{ form.vacancy }}#}
+{#             <button type="submit" class="btn btn-primary-outline" style="margin: 10px">Add Comment</button>#}
+{#        </form>#}
     {% endif %}
 {% endblock %}
