@@ -5,7 +5,7 @@
     {% if user.is_authenticated %}
         <div class="col-lg-3">
             <div class="sliding_form">
-                <form method="post" style="position: fixed" id="post-form">
+                <form method="post" style="position: fixed" id="search-form">
                     {% csrf_token %}
                     {{ form.title }}
                     {{ form.skills }}
@@ -15,9 +15,7 @@
             </div>
         </div>
         <div class="col-lg-6">
-            <div class="loading">
-
-            </div>
+            <div class="loading"></div>
             <div class="search_parameters">
                 <!-- Searched Keywords in green labels -->
                 <div id="searched_skill" style="display: none"></div>

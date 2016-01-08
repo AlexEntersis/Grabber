@@ -1,11 +1,29 @@
 {% extends 'main.html' %}
 {% block current %}
     {% if user.is_authenticated %}
-        <p>{{ name }}'s INDIVIDUAL PAGE</p>
-{#         <form method="get" style="position: fixed">#}
-{#             {{ form.text }}#}
-{#             {{ form.vacancy }}#}
-{#             <button type="submit" class="btn btn-primary-outline" style="margin: 10px">Add Comment</button>#}
-{#        </form>#}
+        <div class="col-lg-3">
+                <textarea id="text_field" rows=1 class="form-control" style=": width: 150px; margin: 10px; width: 210px" placeholder="Text" ></textarea>
+                 <select class="selectpicker" data-live-search="true">
+                    <optgroup label="DIO-soft">
+                        <option>Sn-Java</option>
+                        <option>Jn-QA</option>
+                        <option>Md-PM </option>
+                     </optgroup>
+                     <optgroup label="EPAM">
+                        <option>Ld-Java</option>
+                        <option>Jn-C++</option>
+                        <option>MD-BA</option>
+                      </optgroup>
+                </select>
+      <a id='add_comment' class='btn btn-warning'>Submit</a>
+        </div>
+        <div class="col-lg-9" style="color: whitesmoke">
+                <div class="hidden_profile_id" style="display: none">{{ profile.pk }}</div>
+                <div class="profile_name">{{ profile.name }}</div>
+                <div class="profile_title">{{ profile.title }}</div>
+                <div class="profile_comment_box"></div>
+
+            </div>
+
     {% endif %}
 {% endblock %}
