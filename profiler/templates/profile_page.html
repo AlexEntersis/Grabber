@@ -4,16 +4,25 @@
         <div class="col-lg-3">
                 <textarea id="text_field" rows=1 class="form-control" style=": width: 150px; margin: 10px; width: 210px" placeholder="Text" ></textarea>
                  <select class="selectpicker" data-live-search="true">
-                    <optgroup label="DIO-soft">
-                        <option>Sn-Java</option>
-                        <option>Jn-QA</option>
-                        <option>Md-PM </option>
-                     </optgroup>
-                     <optgroup label="EPAM">
-                        <option>Ld-Java</option>
-                        <option>Jn-C++</option>
-                        <option>MD-BA</option>
-                      </optgroup>
+                     {% for company, vacancy_list in companies.items %}
+                         <optgroup label="{{ company }}">
+                        {% for vacancies in vacancy_list %}
+                            {% for vacancy in vacancies %}
+                                <option><div>{{ vacancy }}: {{ company }}</div></option>
+                            {% endfor %}
+                        {% endfor %}
+                         </optgroup>
+                     {% endfor %}
+{#                    <optgroup label="DIO-soft">#}
+{#                        <option>Sn-Java: DIO-soft</option>#}
+{#                        <option>Jn-QA: DIO-soft</option>#}
+{#                        <option>Md-PM: DIO-soft</option>#}
+{#                     </optgroup>#}
+{#                     <optgroup label="EPAM">#}
+{#                        <option>Ld-Java: EPAM</option>#}
+{#                        <option>Jn-C++: EPAM</option>#}
+{#                        <option>MD-BA: EPAM</option>#}
+{#                      </optgroup>#}
                 </select>
       <a id='add_comment' class='btn btn-warning'>Submit</a>
         </div>

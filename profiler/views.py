@@ -2,15 +2,23 @@ import datetime
 from django.contrib import auth
 from django.http import HttpResponse
 from django.shortcuts import render, render_to_response
+from django.template.defaulttags import register
 from basic_parser.models import Profile
 from pandas.io import json
 from profiler.models import Comments
+
+@register.filter
+def get_item(dictionary, key):
+    return dictionary.get(key)
 
 def basic(request, profile_id):
     if request.method == 'GET':
             args = dict()
             args['user'] = auth.get_user(request)
             args['profile'] = Profile.objects.get(pk=profile_id)
+            args['companies'] = {"Dio-soft": [['Jn. Java', "Sn. Java"]],
+                                 "Epam": [['Jn. C++', "Sn. C++"]],
+                                 "Infopuls": [['Jn. .NET', "Sn. .NET"]]}
             return render_to_response('profile_page.html', args)
     return render(request, 'profile_page.html')
 
@@ -28,7 +36,7 @@ def add_comment(request, profile_id):
     data = {}
     data['profile_name'] = Profile.objects.get(pk=profile_id).name
     data['comment_author'] = auth.get_user(request).username
-    data['comment_vacancy'] = request.POST.get('selected_opening')
+    data['comment_vacancy'] = str(request.POST.get('selected_opening'))
     if request.POST.get('comment_text'):
         data['comment_text'] = request.POST.get('comment_text')
     new_comment = Comments(comment_author=data['comment_author'],

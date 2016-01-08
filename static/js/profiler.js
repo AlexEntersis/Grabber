@@ -5,11 +5,13 @@
 
 
 $(document).ready(function(){
+    $('.some_bullshit').hide();
     $('#add_comment').click(function(){
-
+    var selected_opening = $('.filter-option.pull-left').text();
+    var company_selected  = $()
        data = {'profile_id': $('.hidden_profile_id').text(),
                'comment_text': $('#text_field').val(),
-                "selected_opening": $('.filter-option.pull-left').text()
+                "selected_opening": selected_opening
        };
        $('#text_field').val("");
        add_comment(data);
