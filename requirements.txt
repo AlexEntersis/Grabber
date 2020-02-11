@@ -11,7 +11,7 @@ cffi==1.1.2
 chardet==2.3.0
 cryptography==0.9.3
 cssselect==0.9.1
-Django==1.8.4
+Django==1.11.28
 django-braces==1.4.0
 django-crispy-forms==1.4.0
 django-mptt==0.7.4
