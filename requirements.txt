@@ -23,7 +23,7 @@ grab==0.6.29
 gspread==0.2.5
 gunicorn==19.4.3
 HTMLParser==0.0.2
-httplib2==0.9.1
+httplib2==0.18.0
 idna==2.0
 kombu==3.0.28
 lxml==3.4.4
