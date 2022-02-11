@@ -62,7 +62,7 @@ simplejson==3.7.2
 six==1.10.0
 South==1.0.2
 tqdm==1.0
-Twisted==15.3.0
+Twisted==22.1.0
 uritemplate==0.6
 urllib3==1.11
 user-agent==0.1.0
